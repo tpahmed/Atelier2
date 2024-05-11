@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Atelier 2</title>
+    </head>
+    <body>
+        <label for="catfilter">
+            Filter :
+        </label>
+        <select name="catfilter" id="catfilter">
+            <option value="" selected>no filter</option>
+        </select>
+        <label for="sortprods">Sort by :</label>
+        <select name="sortprods" id="sortprods">
+            <option value="" selected>no sort</option>
+            <option value="stock" selected>stock</option>
+            <option value="price" selected>price</option>
+        </select>
+    <button id="resetprod">Reset</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>price</th>
+                <th>category</th>
+                <th>stock</th>
+            </tr>
+        </thead>
+        <tbody id="prodtable">
+            
+        </tbody>
+    </table>
+    <h3>Totale Price : <span id="tprice">0.0</span> DH</h3>
+    <button id="lowonstock">low on stock</button>
+    <script src="index.js"></script>
+</body>
+</html>
