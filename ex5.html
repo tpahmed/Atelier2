@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <p></p>
+    <a href="ex6.html">suivant</a>
+    <script>
+        const products = [
+            { name: "Shirt", price: 20 },
+            { name: "Shoes", price: 50 },
+            { name: "Hat", price: 15 }
+        ];
+
+
+        function calculateTotale(prev,curr){
+            return {price:prev.price+curr.price*(125/100)};
+        }
+
+        document.querySelector('p').innerText = "prix totale = "+products.reduce(calculateTotale).price;
+
+    </script>
+</body>
+</html>

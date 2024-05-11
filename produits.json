@@ -1,0 +1,12 @@
+[
+    { "name": "Ordinateur portable", "price": 999, "category": "Électronique", "stock": 10 },
+    { "name": "Smartphone haut de gamme", "price": 1299, "category": "Électronique", "stock": 15 },
+    { "name": "Tapis de course", "price": 750, "category": "Fitness", "stock": 8 },
+    { "name": "Roman historique", "price": 20, "category": "Livres", "stock": 50 },
+    { "name": "Jeans homme", "price": 85, "category": "Vêtements", "stock": 25 },
+    { "name": "Montre intelligente", "price": 199, "category": "Électronique", "stock": 30 },
+    { "name": "Kit haltères", "price": 150, "category": "Fitness", "stock": 15 },
+    { "name": "Thriller psychologique", "price": 15, "category": "Livres", "stock": 40 },
+    { "name": "Robe d'été", "price": 120, "category": "Vêtements", "stock": 20 },
+    { "name": "Enceinte Bluetooth", "price": 150, "category": "Électronique", "stock": 40 }
+]

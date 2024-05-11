@@ -1,19 +1,3 @@
-// EX 5
-const products = [
-    { name: "Shirt", price: 20 },
-    { name: "Shoes", price: 50 },
-    { name: "Hat", price: 15 }
-];
-
-
-function calculateTotale(prev,curr){
-    return {price:prev.price+curr.price*(125/100)};
-}
-
-console.log("prix totale = "+products.reduce(calculateTotale).price);
-
-// Ex6
-const prods = [{ name: 'Ordinateur portable', price: 999, category: 'Électronique', stock: 10 },];
 
 let load_elems = prods;
 
@@ -34,22 +18,33 @@ function loadProds(){
 
 function loadCatFilter(){
     const catfilter = document.getElementById("catfilter");
+    const usedCat = [];
     prods.forEach((val)=>{
+        if(usedCat.includes(val.category)) return;
         const opt     = document.createElement("option");
         opt.value     = val.category;
         opt.innerText = val.category;
         catfilter.appendChild(opt);
+        usedCat.push(val.category);
     });
     catfilter.onchange = (e)=>useFunction(filterCategory,e);
+}
+
+function resetProd(){
+    document.getElementById("prodsearch").value = '';
+    load_elems = prods;
+    loadProds();
 }
 
 function loadOPS(){
     loadProds();
     loadCatFilter();
     document.getElementById("lowonstock").onclick = ()=>useFunction(getLowOnStock,null);
-    document.getElementById("resetprod").onclick = ()=>{load_elems = prods;loadProds();};
+    document.getElementById("resetprod").onclick = resetProd;
+    document.getElementById("sortprods").onchange = (e)=>useFunction(sortBy,e);
+    document.getElementById("prodsearch").onkeydown = (e)=>useFunction(filterName,e);
+    document.getElementById("generatechart").onclick = generateChart;
 }
-window.onload = ()=>loadOPS();
 
 function useFunction(func,e){
     load_elems = func(e);
@@ -72,17 +67,55 @@ function getLowOnStock(){
 }
 
 // q4
-function sortBy(ent){
-    return prods.sort((a,b)=>a[ent]-b[ent]);
+function sortBy(e){
+    return prods.sort((a,b)=>b[e.target.value]-a[e.target.value]);
 }
 
 // q5
 
-function filterName(search){
-    return prods.filter((val)=>val.name.match('*'+search+'*'));
+function filterName(e){
+    return prods.filter((val)=>val.name.match(RegExp('.*'+e.target.value+'.*','gi')));
 }
 
 //q6
 function generateChart(){
-
+    const priceByCategory = prods.reduce((acc, prod) => {
+        acc[prod.category] = (acc[prod.category] || 0) + prod.price;
+        return acc;
+    }, {});
+    
+    const categories = Object.keys(priceByCategory);
+    const priceValues = Object.values(priceByCategory);
+    
+    const ctx = document.getElementById('productChart').getContext('2d');
+    const productChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: categories,
+            datasets: [{
+                label: 'Prices by Category',
+                data: priceValues,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 }

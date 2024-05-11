@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    <p></p>
+    <a href="ex2.html">suivant</a>
+    <script>
+        const numbers = [1, 7, 10, 9, 8 , 2];
+        const paired = numbers.filter((val)=>val%2 == 0);
+        for (let i in paired){
+            document.querySelector('p').innerText += `[${i}] ${paired[i]} \n`;
+        }
+
+    </script>
+
+</body>
+</html>

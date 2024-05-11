@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <p></p>
+    <a href="ex4.html">suivant</a>
+    <script>
+        const text = `
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ut d tortor commodo, dgnssm sapen qus, luctus erat.
+            Sed commodo augue vitae imperdiet aliquam.
+            Sed nec est vel urna tincidunt tincidunt sagittis auctor enim.
+            Nullam suscipit quam eget libero viverra, sodales suscipit odio eleifend.
+            Aenean sagittis tellus volutpat, dictum risus in, mollis sapien.
+            Nullam interdum tortor eu pharetra fermentum.
+            Duis commodo dolor accumsan arcu eleifend, eget sagittis nisl accumsan.
+            Etiam vestibulum massa nec ultricies dictum.
+            Cras a nunc eu ante scelerisque suscipit eu ac nibh.
+            Nulla facilisis enim vel augue facilisis, eget sodales metus bibendum.
+            Donec commodo mauris et arcu dictum pulvinar.
+        `.trim();
+        const lines = text.split('\n');
+        const upperCaseLines = lines.map((v)=>v.toUpperCase());
+        console.log(upperCaseLines);
+        const lineWithI = upperCaseLines.filter((v)=>v.includes('I'));
+        const output = document.querySelector('p');
+        lineWithI.forEach((e)=>{
+            output.innerHTML += e + "<br>";
+        });
+
+    </script>
+
+</body>
+</html>

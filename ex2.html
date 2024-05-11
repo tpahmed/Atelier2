@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <p></p>
+    <a href="ex3.html">suivant</a>
+    <script>
+        const numbers = [1,3,4];
+        const factorials = numbers.map((val)=>{
+            let res = 1;
+            for(let i = val; i>1; i--){
+                res *= i;
+            }
+            return res;
+        });
+        for (let i in numbers){
+            document.querySelector('p').innerText += `[${i}] ${numbers[i]} = ${factorials[i]} \n`;
+        }
+
+    </script>
+
+</body>
+</html>

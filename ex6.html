@@ -6,6 +6,18 @@
         <title>Atelier 2</title>
     </head>
     <body>
+
+        <label for="produpload">
+            Upload products list :
+        </label>
+        <input type="file" name="produpload" id="produpload">
+        <br>
+        <label for="prodsearch">
+            Search :
+        </label>
+        <input type="text" name="prodsearch" id="prodsearch">
+
+
         <label for="catfilter">
             Filter :
         </label>
@@ -34,6 +46,27 @@
     </table>
     <h3>Totale Price : <span id="tprice">0.0</span> DH</h3>
     <button id="lowonstock">low on stock</button>
+    <button id="generatechart">generate chart</button>
+
+    <canvas id="productChart"></canvas>
+
+
+    <script>
+        const prods=[];
+
+        document.getElementById('produpload')
+            .addEventListener('change', function () {
+                let fr = new FileReader();
+                fr.onload = function () {
+                    prods.push(...JSON.parse(fr.result));
+                    // function defined in index.js:39
+                    loadOPS();
+                }
+                fr.readAsText(this.files[0]);
+            })
+
+    </script>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 </body>
 </html>
